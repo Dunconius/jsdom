@@ -23,10 +23,41 @@ function createAnimalList(){
         newList.textContent = animal;
         newList.id = animal;
 
+        // 1b. Add a button to remove element from the list
+        let removeItemButton = document.createElement("button")
+
+        removeItemButton.onclick = () => removeAnimalFromList(animal);
+        removeItemButton.textContent = "Remove animal";
+
+        newList.appendChild(removeItemButton);
+
         // 2. Find the ol element that exists in the page and append the li into it
         let rootOlNode = document.querySelector("ol");
         rootOlNode.appendChild(newList);
         
 
     });
+}
+
+
+function removeAnimalFromList(targetAnimalId){
+    // find element with matching id
+    let targetListItem = document.getElementById(targetAnimalId);
+    targetListItem.remove();
+
+    // check if it's in the list
+    let isAnimalInList = animals.includes(targetAnimalId);
+    if (!isAnimalInList) return;
+
+    // remove animal from array
+    animals = animals.filter(animal => {
+        if (targetAnimalId == animal) {
+            return false;
+        } else {
+            return true;
+        }
+    })
+
+
+    // update or wipe and rebuild list
 }
