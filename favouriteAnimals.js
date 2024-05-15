@@ -21,6 +21,7 @@ function createAnimalList(){
         // 1. Create an li element with animal value as it's text
         let newList = document.createElement("li")
         newList.textContent = animal;
+        newList.innerHTML = `<h3> ${animal} </h3>`
         newList.id = animal;
 
         // 1b. Add a button to remove element from the list
@@ -31,7 +32,8 @@ function createAnimalList(){
 
         newList.appendChild(removeItemButton);
 
-        // 2. Find the ol element that exists in the page and append the li into it
+        // 2. Find the ol element (where we want to add these list items) that 
+        // exists in the page and append the li into it
         let rootOlNode = document.querySelector("ol");
         rootOlNode.appendChild(newList);
         
