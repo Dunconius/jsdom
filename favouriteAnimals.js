@@ -95,3 +95,26 @@ fakeFormButton.addEventListener("click", (event) => {addAnimalToList(event, "fak
 
 let realFormButton = document.getElementById("realform-submit");
 realFormButton.addEventListener("click", (event) => {addAnimalToList(event, "realform-addAnimal")})
+
+
+
+function inputHelperReveal(targetElementID){
+    let hintElement = document.getElementById(targetElementID);
+    hintElement.style.display = "inherit";
+}
+
+function inputHelperHide(targetElementID){
+    let hintElement = document.getElementById(targetElementID);
+    hintElement.style.display = "none";
+}
+
+let realFormInput = document.getElementById("realform-addAnimal");
+realFormInput.addEventListener("focusin", () => {inputHelperReveal("realform-hint")});
+realFormInput.addEventListener("focusout", () => {inputHelperHide("realform-hint")});
+inputHelperHide("realform-hint");
+
+
+let fakeFormInput = document.getElementById("fakeform-addAnimal");
+fakeFormInput.addEventListener("focusin", () => {inputHelperReveal("fakeform-hint")});
+fakeFormInput.addEventListener("focusout", () => {inputHelperHide("fakeform-hint")});
+inputHelperHide("fakeform-hint");
